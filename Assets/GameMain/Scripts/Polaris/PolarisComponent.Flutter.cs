@@ -1,6 +1,7 @@
 using System;
 using FlutterUnityIntegration;
 using UnityEngine;
+using UnityGameFramework.Runtime;
 
 namespace StarForce
 {
@@ -9,8 +10,7 @@ namespace StarForce
     {
         Quit,
     }
-    
-    
+
     public partial class PolarisComponent
     {
         private UnityMessageManager _unityMessageManager;
@@ -19,10 +19,8 @@ namespace StarForce
 
         private void sendMessageToFlutter() {
             Debug.Log("GameFramework QUIT");
-            // GameEntry.Shutdown(ShutdownType.Quit);
             _unityMessageManager.SendMessageToFlutter("app.quit");
             Debug.Log("Send Unity message app.quit");
-            // yield return null;
         }
     
         /// <summary>
@@ -37,13 +35,21 @@ namespace StarForce
             }
         }
 
+        /// <summary>
+        /// 不要调用这个方法，会导致app退出
+        /// </summary>
         void QuitGame()
         {
+            UnityGameFramework.Runtime.GameEntry.Shutdown(ShutdownType.Quit);
             Debug.Log("Received message from flutter: QuitGame");
         }
 
+        /// <summary>
+        /// 重新加载游戏
+        /// </summary>
         void ReloadGame()
         {
+            UnityGameFramework.Runtime.GameEntry.Shutdown(ShutdownType.Restart);
             Debug.Log("Received message from flutter: ReloadGame");
         }
 
@@ -54,7 +60,6 @@ namespace StarForce
         {
             Debug.Log("Received message from flutter: PauseGame");
             Time.timeScale = 0;
-            // Application.isPlaying = false;
         }
 
         /// <summary>

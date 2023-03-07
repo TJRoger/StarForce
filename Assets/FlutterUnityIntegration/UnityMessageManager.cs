@@ -87,7 +87,6 @@ namespace FlutterUnityIntegration
         void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             NativeAPI.OnSceneLoaded(scene, mode);
-
         }
 
         public void ShowHostMainWindow()
