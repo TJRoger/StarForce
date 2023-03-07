@@ -72,18 +72,21 @@ namespace StarForce
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
 
+            // 游戏正在运行中
             if (m_CurrentGame != null && !m_CurrentGame.GameOver)
             {
                 m_CurrentGame.Update(elapseSeconds, realElapseSeconds);
                 return;
             }
-
+    
+            // 如果没有设置跳转到菜单，将延时跳转菜单计时器置空
             if (!m_GotoMenu)
             {
                 m_GotoMenu = true;
                 m_GotoMenuDelaySeconds = 0;
             }
 
+            // 游戏结束2秒跳转到菜单页
             m_GotoMenuDelaySeconds += elapseSeconds;
             if (m_GotoMenuDelaySeconds >= GameOverDelayedSeconds)
             {

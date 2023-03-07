@@ -32,6 +32,8 @@ namespace StarForce
 
         private MyAircraft m_MyAircraft = null;
 
+        private Polaris polaris = null;
+
         public virtual void Initialize()
         {
             GameEntry.Event.Subscribe(ShowEntitySuccessEventArgs.EventId, OnShowEntitySuccess);
@@ -45,6 +47,7 @@ namespace StarForce
             }
 
             SceneBackground.VisibleBoundary.gameObject.GetOrAddComponent<HideByBoundary>();
+            // GameEntry.Entity.ShowPolaris(new PolarisData(GameEntry.Entity.GenerateSerialId(), 80001, 10 * Vector2.one, true));
             GameEntry.Entity.ShowMyAircraft(new MyAircraftData(GameEntry.Entity.GenerateSerialId(), 10000)
             {
                 Name = "My Aircraft",

@@ -54,6 +54,7 @@ namespace StarForce
                 Log.Warning("Parse build info failure.");
                 return;
             }
+         
         }
 
         public void InitDefaultDictionary()
