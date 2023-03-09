@@ -82,6 +82,7 @@ namespace StarForce
                 }
             }
 
+            // 通过配置文件获取菜单场景配置，然后借用ProcedureChangeScene切换过去
             procedureOwner.SetData<VarInt32>("NextSceneId", GameEntry.Config.GetInt("Scene.Menu"));
             ChangeState<ProcedureChangeScene>(procedureOwner);
         }

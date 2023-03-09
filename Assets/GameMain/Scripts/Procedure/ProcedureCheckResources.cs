@@ -39,6 +39,7 @@ namespace StarForce
                 return;
             }
 
+            // 有资源需要更新时更新资源
             if (m_NeedUpdateResources)
             {
                 procedureOwner.SetData<VarInt32>("UpdateResourceCount", m_UpdateResourceCount);

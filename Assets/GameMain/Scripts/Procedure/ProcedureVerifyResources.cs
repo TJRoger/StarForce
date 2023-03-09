@@ -41,6 +41,7 @@ namespace StarForce
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
 
+            //验证资源，验证完成后切换到检查资源流程
             if (!m_VerifyResourcesComplete)
             {
                 return;
